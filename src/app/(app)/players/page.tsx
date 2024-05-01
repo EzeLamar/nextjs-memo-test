@@ -1,9 +1,9 @@
 'use client'
 
-import Header from '@/app/(app)/Header'
 import { useState, useEffect } from 'react'
 import Loading from '../Loading'
 import { useQuery, gql } from '@apollo/client'
+import Header from '../Header'
 
 const USER_QUERY = gql`
     {
@@ -16,8 +16,8 @@ const USER_QUERY = gql`
 `
 
 const Players = () => {
-    const [players, setPlayers] = useState(null)
-    const [isLoading, setIsLoading] = useState(true)
+    const [players, setPlayers] = useState<string>('')
+    const [isLoading, setIsLoading] = useState<boolean>(true)
     const { data, loading, error } = useQuery(USER_QUERY)
 
     useEffect(() => {

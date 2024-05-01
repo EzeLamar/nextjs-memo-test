@@ -10,8 +10,11 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 })
 
-const AppLayout = ({ children }) => {
-    const { user } = useAuth({ middleware: 'auth' })
+const AppLayout = ({ children }: { children: React.ReactNode }) => {
+    const { user } = useAuth({
+        middleware: 'auth',
+        redirectIfAuthenticated: null,
+    })
 
     if (!user) {
         return <Loading />

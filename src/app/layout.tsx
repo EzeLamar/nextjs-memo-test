@@ -3,7 +3,7 @@ import '@/app/global.css'
 export const metadata = {
     title: 'Laravel',
 }
-const RootLayout = ({ children }) => {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <html lang="en">
             <body className="antialiased">{children}</body>

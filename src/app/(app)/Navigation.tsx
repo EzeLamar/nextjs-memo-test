@@ -10,7 +10,7 @@ import { useAuth } from '@/hooks/auth'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
-const Navigation = ({ user }) => {
+const Navigation = ({ user }: { user: any }) => {
     const { logout } = useAuth()
 
     const [open, setOpen] = useState(false)
@@ -47,7 +47,7 @@ const Navigation = ({ user }) => {
                     <div className="hidden sm:flex sm:items-center sm:ml-6">
                         <Dropdown
                             align="right"
-                            width="48"
+                            width={48}
                             trigger={
                                 <button className="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 focus:outline-none transition duration-150 ease-in-out">
                                     <div>{user?.name}</div>
