@@ -16,7 +16,8 @@ module.exports = {
         'eslint:recommended',
         'plugin:react/recommended',
         'plugin:prettier/recommended',
-        'plugin:@typescript-eslint/recommended'
+        'plugin:@typescript-eslint/recommended',
+        'plugin:storybook/recommended',
     ],
     parserOptions: {
         ecmaFeatures: {
@@ -28,7 +29,12 @@ module.exports = {
             presets: ['@babel/preset-react'],
         },
     },
-    plugins: ['react', '@next/eslint-plugin-next', 'prettier', '@typescript-eslint'],
+    plugins: [
+        'react',
+        '@next/eslint-plugin-next',
+        'prettier',
+        '@typescript-eslint',
+    ],
     rules: {
         'import/prefer-default-export': 0,
         'no-console': 'warn',

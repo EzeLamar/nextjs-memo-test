@@ -27,7 +27,15 @@
         ".next/types/**/*.ts",
         "**/*.ts",
         "**/*.tsx",
-        "src/app/layout.js"
-, "src/app/(auth)/forgot-password/page.js", "src/app/(auth)/login/page.js", "src/app/(auth)/password-reset/[token]/page.js", "src/app/(auth)/register/page.js", "src/app/(auth)/verify-email/page.js", "src/app/(auth)/AuthCard.js", "src/app/(auth)/AuthSessionStatus.js", "src/app/(auth)/layout.js"    ],
+        "src/app/layout.js",
+        "src/app/(auth)/forgot-password/page.js",
+        "src/app/(auth)/login/page.js",
+        "src/app/(auth)/password-reset/[token]/page.js",
+        "src/app/(auth)/register/page.js",
+        "src/app/(auth)/verify-email/page.js",
+        "src/app/(auth)/AuthCard.js",
+        "src/app/(auth)/AuthSessionStatus.js",
+        "src/app/(auth)/layout.js"
+    ],
     "exclude": ["node_modules"]
 }
