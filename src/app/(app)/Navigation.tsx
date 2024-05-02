@@ -10,7 +10,7 @@ import { useAuth } from '@/hooks/auth'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
-const Navigation = ({ user }: { user: any }) => {
+const Navigation = ({ user }: { user: unknown }) => {
     const { logout } = useAuth()
 
     const [open, setOpen] = useState(false)
@@ -34,11 +34,6 @@ const Navigation = ({ user }: { user: any }) => {
                                 href="/dashboard"
                                 active={usePathname() === '/dashboard'}>
                                 Dashboard
-                            </NavLink>
-                            <NavLink
-                                href="/players"
-                                active={usePathname() === '/players'}>
-                                Players
                             </NavLink>
                         </div>
                     </div>
