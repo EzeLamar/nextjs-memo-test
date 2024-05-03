@@ -47,7 +47,7 @@ const GameOption = ({ game }: Prop) => {
 
     return (
         <div className="flex justify-center">
-            <div className="bg-white max-w-sm rounded-lg border border-gray-200 px-3 py-3 shadow-md mx-auto">
+            <div className="bg-white w-[25rem] rounded-lg border border-gray-200 px-3 py-3 shadow-md mx-auto">
                 <h1 className="text-purple-800 text-lg mb-2 text-center font-bold">
                     {game.memoTest.name}
                 </h1>

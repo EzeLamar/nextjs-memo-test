@@ -5,9 +5,9 @@ import Link from 'next/link'
 
 const Home = () => {
     return (
-        <>
+        <div className="min-h-screen bg-gradient-to-br from-yellow-200 to-pink-200">
             <Header title="Home" />
-            <div className="relative flex items-top justify-center min-h-screen bg-gradient-to-br from-yellow-200 to-pink-200 sm:items-center sm:pt-0">
+            <div className="h-full py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="flex justify-center">
                         <div className="bg-white max-w-sm rounded-lg border border-gray-200 px-3 py-3 shadow-md mx-auto">
@@ -23,7 +23,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

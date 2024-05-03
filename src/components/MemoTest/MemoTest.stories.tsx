@@ -49,6 +49,14 @@ const StartCards = [
 	{
 		image: "https://cdn-icons-png.freepik.com/256/1998/1998627.png?semt=ais_hybrid",
 		found: false
+	},
+	{
+		image: "https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/256/Bear-icon.png",
+		found: false
+	},
+	{
+		image: "https://icons.iconarchive.com/icons/iconarchive/childrens-book-animals/256/Bear-icon.png",
+		found: false
 	}
 ]
 

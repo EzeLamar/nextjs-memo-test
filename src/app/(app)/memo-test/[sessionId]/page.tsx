@@ -58,7 +58,7 @@ const MemoTestView = ({ params }: Props) => {
     return (
         <>
             <Header title="Memo Test" />
-            <div className="py-12">
+            <div className="h-full py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     {isLoading ? (
                         <Loading />

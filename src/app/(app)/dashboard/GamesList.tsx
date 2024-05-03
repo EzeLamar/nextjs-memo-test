@@ -50,10 +50,7 @@ const GamesLists = ({ memoTests, gameSessions }: Props) => {
 
     return (
         <div className="h-full py-6 p-12 max-w">
-            <h1 className="text-purple-800 text-lg mb-5 text-center font-bold">
-                Games:
-            </h1>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-4 md:grid-cols-4">
                 {games.map(game => (
                     <GameOption key={game.memoTest.id} game={game} />
                 ))}

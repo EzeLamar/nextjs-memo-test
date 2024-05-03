@@ -96,12 +96,12 @@ const MemoTest = ({
     }
 
     return (
-        <div className="flex justify-center items-center h-screen font-sans">
+        <div className="flex justify-center">
             <div className="bg-white shadow-md p-8 max-w-2xl rounded-xl">
                 <h1 className="text-3xl font-bold mb-4 text-purple-800 text-center">
                     {name}
                 </h1>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid gap-2 md:grid-cols-4 sm:grid-cols-2">
                     {memoTest.map((memoTestCard, index) => {
                         return (
                             <Card
