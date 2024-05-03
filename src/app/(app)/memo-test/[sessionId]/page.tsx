@@ -2,40 +2,11 @@
 
 import MemoTest, { MemoTestCard } from '@/components/MemoTest/MemoTest'
 import Header from '../../Header'
-import { gql, useMutation, useQuery } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import Loading from '../../Loading'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-
-const SESSION_QUERY = gql`
-    query getSession($sessionId: ID!) {
-        gameSession(id: $sessionId) {
-            memoTest {
-                id
-                images
-                name
-            }
-            retries
-            state
-            numberOfPairs
-        }
-    }
-`
-
-const UPDATE_SESSION_MUTATION = gql`
-    mutation editGameSession(
-        $sessionId: ID!
-        $retries: Int
-        $state: StateType
-    ) {
-        updateGameSession(id: $sessionId, retries: $retries, state: $state) {
-            numberOfPairs
-            retries
-            state
-            id
-        }
-    }
-`
+import { SESSION_QUERY, UPDATE_SESSION_MUTATION } from '@/graphql/gameSession'
 
 type Props = {
     params: {
@@ -65,16 +36,14 @@ const MemoTestView = ({ params }: Props) => {
     const [editSession] = useMutation(UPDATE_SESSION_MUTATION)
 
     const handleWinGame = () => {
-        alert('are you wining son?')
-
         editSession({
             variables: {
                 sessionId: params.sessionId,
                 state: 'COMPLETED',
                 retries: retries + 1,
             },
-        }).then(() => {
-            router.push('/score/' + params.sessionId)
+        }).then(result => {
+            router.push('/score/' + result.data.updateGameSession.id)
         })
     }
 
@@ -91,23 +60,17 @@ const MemoTestView = ({ params }: Props) => {
             <Header title="Memo Test" />
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 bg-white border-b border-gray-200">
-                            {isLoading ? (
-                                <Loading />
-                            ) : (
-                                <MemoTest
-                                    memoTestCards={memoTestCards}
-                                    name={data.gameSession.memoTest.name}
-                                    sessionId={params.sessionId}
-                                    handleWinGame={handleWinGame}
-                                    handleIncreaseRetries={
-                                        handleIncreaseRetries
-                                    }
-                                />
-                            )}
-                        </div>
-                    </div>
+                    {isLoading ? (
+                        <Loading />
+                    ) : (
+                        <MemoTest
+                            memoTestCards={memoTestCards}
+                            name={data.gameSession.memoTest.name}
+                            sessionId={params.sessionId}
+                            handleWinGame={handleWinGame}
+                            handleIncreaseRetries={handleIncreaseRetries}
+                        />
+                    )}
                 </div>
             </div>
         </>

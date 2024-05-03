@@ -24,7 +24,7 @@ const Card = ({
             <div className="w-full h-full flex items-center justify-center">
                 {memoTestCard.found || indexFirstSelected === index ? (
                     <img
-                        className="relative h-full w-full object-cover"
+                        className="card relative h-full w-full object-cover"
                         src={memoTestCard.image}
                         alt=""
                     />

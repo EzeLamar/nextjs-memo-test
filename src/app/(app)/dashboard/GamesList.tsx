@@ -49,7 +49,10 @@ const GamesLists = ({ memoTests, gameSessions }: Props) => {
     }, [])
 
     return (
-        <div className="bg-white shadow-md p-8 max-w-2xl">
+        <div className="h-full py-6 p-12 max-w">
+            <h1 className="text-purple-800 text-lg mb-5 text-center font-bold">
+                Games:
+            </h1>
             <div className="grid grid-cols-2 gap-4">
                 {games.map(game => (
                     <GameOption key={game.memoTest.id} game={game} />
@@ -60,3 +63,8 @@ const GamesLists = ({ memoTests, gameSessions }: Props) => {
 }
 
 export default GamesLists
+
+{
+    /* <div className="h-full py-12">
+<div className="max-w-7xl mx-auto sm:px-6 lg:px-8"> */
+}

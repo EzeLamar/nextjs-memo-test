@@ -21,7 +21,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-screen bg-gradient-to-br from-yellow-200 to-pink-200">
             <ApolloProvider client={client}>
                 <Navigation user={user} />
                 <main>{children}</main>

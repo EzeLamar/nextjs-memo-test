@@ -1,31 +1,11 @@
 'use client'
 
 import Loading from '../Loading'
-import { useQuery, gql } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import Header from '../Header'
 import { useAuth } from '@/hooks/auth'
 import GamesLists from './GamesList'
-
-const MEMO_TESTS_QUERY = gql`
-    query getMemotests($userId: ID!) {
-        memoTests {
-            id
-            images
-            name
-        }
-        user(id: $userId) {
-            gameSessions {
-                id
-                numberOfPairs
-                retries
-                state
-                memoTest {
-                    id
-                }
-            }
-        }
-    }
-`
+import { MEMO_TESTS_QUERY } from '@/graphql/memoTest'
 
 const Dashboard = () => {
     const { user } = useAuth({
@@ -49,12 +29,10 @@ const Dashboard = () => {
                     <Loading />
                 ) : (
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <GamesLists
-                                memoTests={data.memoTests}
-                                gameSessions={data.user.gameSessions}
-                            />
-                        </div>
+                        <GamesLists
+                            memoTests={data.memoTests}
+                            gameSessions={data.user.gameSessions}
+                        />
                     </div>
                 )}
             </div>

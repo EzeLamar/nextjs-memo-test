@@ -43,9 +43,7 @@ const MemoTest = ({
             setIndexFirstSelected(index)
             return
         }
-
         handleIncreaseRetries()
-
         if (memoTest[indexFirstSelected].image === memoTest[index].image) {
             const updatedMemoTest = memoTest.reduce(
                 (ac: MemoTestCard[], currentCard, currentIndex) => {
@@ -65,6 +63,7 @@ const MemoTest = ({
             )
             setMemoTest(updatedMemoTest)
             if (missingPairs === 1) {
+                sessionStorage.removeItem('session-' + sessionId)
                 handleWinGame()
             }
             setMissingPairs(missingPairs - 1)
@@ -73,7 +72,7 @@ const MemoTest = ({
     }
 
     return (
-        <div className="bg-gradient-to-br from-yellow-200 to-pink-200 flex justify-center items-center h-screen font-sans">
+        <div className="flex justify-center items-center h-screen font-sans">
             <div className="bg-white shadow-md p-8 max-w-2xl rounded-xl">
                 <h1 className="text-3xl font-bold mb-4 text-purple-800 text-center">
                     {name}
