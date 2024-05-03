@@ -24,7 +24,7 @@ const Card = ({
                 key={index}
                 onClick={() => handleSelectCard(index)}>
                 <div
-                    className={`flip-card-inner relative w-[100%] h-[100%] ${
+                    className={`flip-card-inner relative w-[100%] h-[100%] bg-green-500 ${
                         !selected ? 'flipped' : ''
                     }`}>
                     <div className="flip-card-front">
@@ -34,7 +34,7 @@ const Card = ({
                             alt={'image-' + index}
                         />
                     </div>
-                    <div className="card bg-green-500 flip-card-back absolute w-[100%] h-[100%] text-center font-semibold text-xl text-green-900">
+                    <div className="card flip-card-back absolute w-[100%] h-[100%] text-center font-semibold text-xl text-green-900">
                         <p className="relative w-full h-full flex items-center justify-center">
                             {index + 1}
                         </p>

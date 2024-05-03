@@ -111,6 +111,9 @@ const Login = () => {
                     </Link>
 
                     <Button className="ml-3">Login</Button>
+                    <Link href="/register" className="ml-3">
+                        Register
+                    </Link>
                 </div>
             </form>
         </>
