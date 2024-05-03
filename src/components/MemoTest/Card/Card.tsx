@@ -1,40 +1,47 @@
 import React from 'react'
 import './Card.css'
-import { MemoTestCard } from '../MemoTest'
 
 type Props = {
-    memoTestCard: MemoTestCard
+    image: string
     index: number
-    indexFirstSelected: number | null
+    disabled: boolean
+    selected: boolean
     handleSelectCard: (index: number) => void
 }
 
 const Card = ({
-    memoTestCard,
+    image,
     index,
-    indexFirstSelected,
+    disabled,
+    selected,
     handleSelectCard,
 }: Props) => {
     return (
-        <button
-            disabled={memoTestCard.found || indexFirstSelected === index}
-            className="card w-[100px] h-[100px] bg-green-300 p-0 relative"
-            key={index}
-            onClick={() => handleSelectCard(index)}>
-            <div className="w-full h-full flex items-center justify-center">
-                {memoTestCard.found || indexFirstSelected === index ? (
-                    <img
-                        className="card relative h-full w-full object-cover"
-                        src={memoTestCard.image}
-                        alt=""
-                    />
-                ) : (
-                    <p className="relative text-center font-semibold text-xl text-green-900">
-                        {index + 1}
-                    </p>
-                )}
-            </div>
-        </button>
+        <>
+            <button
+                disabled={disabled}
+                className="card flip-card w-[100px] h-[100px] p-0 relative"
+                key={index}
+                onClick={() => handleSelectCard(index)}>
+                <div
+                    className={`flip-card-inner relative w-[100%] h-[100%] ${
+                        !selected ? 'flipped' : ''
+                    }`}>
+                    <div className="flip-card-front">
+                        <img
+                            className="card absolute w-[100%] h-[100%] object-cover"
+                            src={image}
+                            alt={'image-' + index}
+                        />
+                    </div>
+                    <div className="card bg-green-500 flip-card-back absolute w-[100%] h-[100%] text-center font-semibold text-xl text-green-900">
+                        <p className="relative w-full h-full flex items-center justify-center">
+                            {index + 1}
+                        </p>
+                    </div>
+                </div>
+            </button>
+        </>
     )
 }
 
