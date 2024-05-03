@@ -52,8 +52,12 @@ const StartCards = [
 	}
 ]
 
-const handleUpdateSession = () => {
+const handleWinGame = () => {
 	alert("You Win!")
+}
+
+const handleIncreaseRetries = () => {
+	alert("Pair Selected!")
 }
 
 
@@ -62,7 +66,8 @@ export const Start: Story = {
 		name: "Level 1",
 		memoTestCards: StartCards,
 		sessionId: "1",
-		handleUpdateSession
+		handleWinGame,
+		handleIncreaseRetries
 	},
 }
 
@@ -71,7 +76,8 @@ export const AlmostComplete: Story = {
 		name: "Level 1",
 		memoTestCards: almostCompleteCards,
 		sessionId: "2",
-		handleUpdateSession
+		handleWinGame,
+		handleIncreaseRetries
 	},
 }
 

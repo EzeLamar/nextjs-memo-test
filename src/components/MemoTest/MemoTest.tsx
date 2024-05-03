@@ -12,14 +12,16 @@ type Props = {
     memoTestCards: MemoTestCard[]
     name: string
     sessionId: string
-    handleUpdateSession: () => void
+    handleWinGame: () => void
+    handleIncreaseRetries: () => void
 }
 
 const MemoTest = ({
     name,
     memoTestCards,
     sessionId,
-    handleUpdateSession,
+    handleWinGame,
+    handleIncreaseRetries,
 }: Props) => {
     const [indexFirstSelected, setIndexFirstSelected] = useState<number | null>(
         null,
@@ -28,7 +30,7 @@ const MemoTest = ({
     const [memoTest, setMemoTest] = useState<MemoTestCard[]>(
         savedMemoTest ? JSON.parse(savedMemoTest) : memoTestCards,
     )
-    const [unfoundPairs, setUnfoundPairs] = useState<number>(
+    const [missingPairs, setMissingPairs] = useState<number>(
         memoTest.filter(card => !card.found).length / 2,
     )
 
@@ -41,7 +43,8 @@ const MemoTest = ({
             setIndexFirstSelected(index)
             return
         }
-        //TODO increment retries + 1
+
+        handleIncreaseRetries()
 
         if (memoTest[indexFirstSelected].image === memoTest[index].image) {
             const updatedMemoTest = memoTest.reduce(
@@ -61,17 +64,10 @@ const MemoTest = ({
                 [],
             )
             setMemoTest(updatedMemoTest)
-
-            //TODO increment score
-
-            //TODO if all cards found then execute mutation of graphql to update
-            if (unfoundPairs === 1) {
-                handleUpdateSession()
+            if (missingPairs === 1) {
+                handleWinGame()
             }
-
-            setUnfoundPairs(unfoundPairs - 1)
-            setIndexFirstSelected(null)
-            return
+            setMissingPairs(missingPairs - 1)
         }
         setIndexFirstSelected(null)
     }
