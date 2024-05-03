@@ -48,17 +48,6 @@ const GamesLists = ({ memoTests, gameSessions }: Props) => {
         return
     }, [])
 
-    // const startedMemoTestIds: string[] = []
-    // const completedMemoTestIds: string[] = []
-    // gameSessions.forEach(gameSession => {
-    //     const memoTestId = gameSession.memoTest.id
-    //     if (gameSession.state === 'Started') {
-    //         startedMemoTestIds.push(memoTestId)
-    //     } else {
-    //         completedMemoTestIds.push(memoTestId)
-    //     }
-    // })
-
     return (
         <div className="bg-white shadow-md p-8 max-w-2xl">
             <div className="grid grid-cols-2 gap-4">
