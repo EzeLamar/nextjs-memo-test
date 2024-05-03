@@ -1,91 +1,48 @@
-# Laravel Breeze - Next.js Edition ▲
+# Memotest with Next.js and GraphQL
 
 ## Introduction
 
-This repository is an implementation of the [Laravel Breeze](https://laravel.com/docs/starter-kits) application / authentication starter kit frontend in [Next.js](https://nextjs.org). All of the authentication boilerplate is already written for you - powered by [Laravel Sanctum](https://laravel.com/docs/sanctum), allowing you to quickly begin pairing your beautiful Next.js frontend with a powerful Laravel backend.
+Classic Memo-test game created by Next.Js for the frontend and Laravel with GraphQL for the backend.
 
-## Official Documentation
+This project is divided in two repositories, frontend (this repo) and backend ([laravel-memo-test](https://github.com/EzeLamar/laravel-memo-test)).
+
+For the implementation of this project it was used [Laravel Breeze](https://laravel.com/docs/starter-kits) application / authentication starter kit frontend in [Next.js](https://nextjs.org). All of the authentication boilerplate is powered by [Laravel Sanctum](https://laravel.com/docs/sanctum).
+
+Also Typescript and Storybook was added to the project.
+
+## Documentation
+
+### Pre-requisites
+The backend of the project is allocated on  [laravel-memo-test](https://github.com/EzeLamar/laravel-memo-test) repository.
+
+Follow the instructions and configure the backend, then continue with the Frontend installation step.
 
 ### Installation
 
-First, create a Next.js compatible Laravel backend by installing Laravel Breeze into a [fresh Laravel application](https://laravel.com/docs/installation) and installing Breeze's API scaffolding:
-
+Clone this repository on your local machine, open a terminal and move to the root folder of the project (nextjs-memo-test):
 ```bash
-# Create the Laravel application...
-laravel new next-backend
-
-cd next-backend
-
-# Install Breeze and dependencies...
-composer require laravel/breeze --dev
-
-php artisan breeze:install api
-
-# Run database migrations...
-php artisan migrate
+cd nextjs-memo-test
+npm install
 ```
+#### Localhost Configuration
 
-Next, ensure that your application's `APP_URL` and `FRONTEND_URL` environment variables are set to `http://localhost:8000` and `http://localhost:3000`, respectively.
-
-After defining the appropriate environment variables, you may serve the Laravel application using the `serve` Artisan command:
-
+On the root folder of the project, create a new file **.env.local** with the same content than **.env.example**. This file will include the environment variable with the URL of our backend
 ```bash
-# Serve the application...
-php artisan serve
+.env.local:
+NEXT_PUBLIC_BACKEND_URL<BACKEND_URL>
 ```
-
-Next, clone this repository and install its dependencies with `yarn install` or `npm install`. Then, copy the `.env.example` file to `.env.local` and supply the URL of your backend:
-
-```
-NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
-```
-
-Finally, run the application via `npm run dev`. The application will be available at `http://localhost:3000`:
-
+#### Usage
+Finally, on the root folder run the application with the command:
 ```
 npm run dev
 ```
+The application will be available at `http://localhost:3000`:
 
-> Note: Currently, we recommend using `localhost` during local development of your backend and frontend to avoid CORS "Same-Origin" issues.
+### Login/Register
+In order to acces and play with all the MemoTests, we need to login with a previously created account. Navigate to **Register** link on `http://localhost:3000` to create a new account or Login with the **Signin** link on `http://localhost:3000`
 
-### Authentication Hook
-
-This Next.js application contains a custom `useAuth` React hook, designed to abstract all authentication logic away from your pages. In addition, the hook can be used to access the currently authenticated user:
-
-```js
-const ExamplePage = () => {
-    const { logout, user } = useAuth({ middleware: 'auth' })
-
-    return (
-        <>
-            <p>{user?.name}</p>
-
-            <button onClick={logout}>Sign out</button>
-        </>
-    )
-}
-
-export default ExamplePage
+### Storybook
+Use the next command on the root of the project to run the storybook server:
 ```
-
-> Note: You will need to use [optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) (`user?.name` instead of `user.name`) when accessing properties on the user object to account for Next.js's initial server-side render.
-
-### Named Routes
-
-For convenience, [Ziggy](https://github.com/tighten/ziggy#spas-or-separate-repos) may be used to reference your Laravel application's named route URLs from your React application.
-
-## Contributing
-
-Thank you for considering contributing to Breeze Next! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-Please review [our security policy](https://github.com/laravel/nextjs-memo-test/security/policy) on how to report security vulnerabilities.
-
-## License
-
-Laravel Breeze Next is open-sourced software licensed under the [MIT license](LICENSE.md).
+npm run storybook
+```
