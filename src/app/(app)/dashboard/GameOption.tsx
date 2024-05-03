@@ -6,12 +6,12 @@ import { useAuth } from '@/hooks/auth'
 import { useRouter } from 'next/navigation'
 
 const CREATE_SESSION_MUTATION = gql`
-    mutation createGameSession($userId: ID!, $memoTestId: ID!) {
+    mutation createGameSession($userId: ID!, $memoTestId: ID!, $pairs: Int!) {
         createGameSession(
             input: {
                 state: STARTED
                 retries: 0
-                numberOfPairs: 0
+                numberOfPairs: $pairs
                 player: { connect: $userId }
                 memoTest: { connect: $memoTestId }
             }
@@ -40,7 +40,11 @@ const GameOption = ({ game }: Prop) => {
         }
 
         addSession({
-            variables: { userId: user.id, memoTestId: game.memoTest.id },
+            variables: {
+                userId: user.id,
+                memoTestId: game.memoTest.id,
+                pairs: game.memoTest.images.length / 2,
+            },
         }).then(result => {
             router.push('/memo-test/' + result.data.createGameSession.id)
         })
