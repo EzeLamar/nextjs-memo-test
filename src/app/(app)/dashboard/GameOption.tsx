@@ -12,8 +12,8 @@ const CREATE_SESSION_MUTATION = gql`
                 state: STARTED
                 retries: 0
                 numberOfPairs: 0
-                memoTest: { connect: $userId }
-                player: { connect: $memoTestId }
+                player: { connect: $userId }
+                memoTest: { connect: $memoTestId }
             }
         ) {
             id
@@ -36,6 +36,7 @@ const GameOption = ({ game }: Prop) => {
     const handleSelectGame = () => {
         if (game.gameSession) {
             router.push('/memo-test/' + game.gameSession?.id)
+            return
         }
 
         addSession({
@@ -48,7 +49,7 @@ const GameOption = ({ game }: Prop) => {
     let buttonLabel = 'Start'
     if (game.gameSession) {
         buttonLabel =
-            game.gameSession.state === 'Started' ? 'In Progress' : 'Completed'
+            game.gameSession.state === 'STARTED' ? 'In Progress' : 'Completed'
     }
 
     return (
@@ -57,7 +58,6 @@ const GameOption = ({ game }: Prop) => {
                 <div className="font-bold text-xl mb-2">
                     {game.memoTest.name}
                 </div>
-                {/* <p className="text-gray-700 text-base">Score: 0 Errors: 0</p> */}
             </div>
             <div className="px-6 pt-4 pb-2">
                 <button

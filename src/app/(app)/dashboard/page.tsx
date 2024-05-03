@@ -33,6 +33,7 @@ const Dashboard = () => {
         redirectIfAuthenticated: null,
     })
     const { data, loading, error } = useQuery(MEMO_TESTS_QUERY, {
+        fetchPolicy: 'network-only',
         variables: { userId: user.id },
     })
 
