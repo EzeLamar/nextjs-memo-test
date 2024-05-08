@@ -51,17 +51,18 @@ const GamesLists = ({ memoTests, gameSessions }: Props) => {
     return (
         <div className="h-full py-6 p-12 max-w">
             <div className="grid sm:grid-cols-2 gap-4 md:grid-cols-4">
-                {games.map(game => (
-                    <GameOption key={game.memoTest.id} game={game} />
-                ))}
+                {memoTests.length === 0 ? (
+                    <div className="text-purple-800 text-lg mb-2 text-center font-bold">
+                        Memo Tests not found..
+                    </div>
+                ) : (
+                    games.map(game => (
+                        <GameOption key={game.memoTest.id} game={game} />
+                    ))
+                )}
             </div>
         </div>
     )
 }
 
 export default GamesLists
-
-{
-    /* <div className="h-full py-12">
-<div className="max-w-7xl mx-auto sm:px-6 lg:px-8"> */
-}
